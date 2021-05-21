@@ -1,0 +1,21 @@
+<section class="mt-5 mb-5">
+    <div class="container">
+        <h1 style="margin-top: 95px;">All Post</h1>
+        <div class="row">
+            {{#each posts}}
+            <div class="col-md-4 ">
+                <div class="card  mt-5" style="width: 18rem;">
+                    <img class="card-img-top" src="/images/post/post-thumbnails/big_{{this._id}}.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">{{this.data.title}}</h5>
+                        <span class="d-block"><a href="/readPost/{{this._id}}">{{this.data.aouther}}</a> in <a href="/category/{{this.data.category}}">{{this.data.category}}</a></span>
+                        <span class="date-read">{{this.date}}<span class="icon-star2"></span></span>
+                        <p class="card-text limited-letter">{{this.data.article}}</p>
+                        <a href='/readPost/{{this._id}}' class="btn btn-primary">Read More</a>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</section>

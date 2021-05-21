@@ -1,0 +1,80 @@
+<section>
+    <form action="/admin/add-post" method="POST" enctype="multipart/form-data">
+        <div class="headinput">
+
+        </div>
+        <input type="text" name="title" id="" class="postinput" placeholder="Title">
+        <button class="btn ml-4">Publish</button>
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <input type="text" name="aouther" id="" class="postinput" placeholder="Aouther">
+            </div>
+            <div class="col-md-6 mt-3">
+                <p>Uplode Aouther Image:  
+                <input type="file" name="personImage" id="">
+
+                </p>
+
+            </div>
+        </div>
+        <div class="container"></div>
+        <div class="row">
+            <div class="col-10 article">
+                <center><textarea name="article" id="" cols="100" rows="14" class="text mt-3"></textarea></center>
+            </div>
+            <div class="col-2">
+                <p>Uplode thumbnail image:</p>
+                <img src="/images/back-ground.PNG" alt="" id="image" >
+                <input type="file" class="form-control-file" name="image" id="imageInp" onchange="viewImage(event)">
+               <hr>
+               {{#each category}}
+                <input type="checkbox" name="category" id="" value="{{this.category}}"> {{this.category}} <br>  
+               {{/each}}
+            </div>
+        </div>
+
+    </form>
+</section>
+<style>
+    .postinput {
+        width: 85%;
+        margin-top: 5px;
+        margin-left: 30px;
+        font-size: 20px;
+        border: none;
+        background-color: #fff;
+        border-bottom: 2px solid #5fbae9;
+    }
+
+    .text {
+        margin-bottom: -7px;
+        background-color: #fff;
+        border: none;
+        padding: 15px 15px;
+    }
+
+    .article {
+        background-color: #ebebeb;
+    }
+    #image{
+    margin-bottom: 10px;
+    width: 150px ;
+    height: 100px;
+    border: solid 2px #5fbae9;
+    appearance: initial;
+    background-color: unset;
+    cursor: pointer;
+    align-items: unset;
+    color: unset;
+    text-overflow: ellipsis;
+    white-space:unset;
+    text-align: unset !important;
+    padding:unset;
+    -webkit-writing-mode:unset;
+    }
+</style>
+<script>
+    function viewImage(event){
+        document.getElementById('image').src=URL.createObjectURL(event.target.files[0])
+    }
+</script>

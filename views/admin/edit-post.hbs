@@ -1,0 +1,86 @@
+<section>
+    <form action="/admin/edit-post/{{post._id}}" method="POST" enctype="multipart/form-data">
+        <div class="headinput">
+
+        </div>
+        <input type="text" name="title" id="" class="postinput" placeholder="Title" value="{{post.data.title}}">
+        <button class="btn ml-4">Update</button>
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <input type="text" name="aouther" id="" class="postinput" placeholder="Aouther" value="{{post.data.aouther}}">
+            </div>
+            <div class="col-md-6 mt-3">
+                <p>Uplode Aouther Image:  
+                <input type="file" name="personImage" id="" >
+                <img src="/images/post/author-images/{{post._id}}author.jpg" class="imagetag" alt="author image" width="70px" >
+
+                </p>
+
+            </div>
+        </div>
+        <div class="container"></div>
+        <div class="row">
+            <div class="col-10 article">
+                <center><textarea name="article" id="" cols="100" rows="14" class="text mt-3">{{post.data.article}}</textarea></center>
+            </div>
+            <div class="col-2">
+                <p>Uplode thumbnail image:</p>
+                <img src="/images/post/{{post._id}}.jpg" alt="" id="image" >
+                <input type="file" class="form-control-file" name="image" id="imageInp" onchange="viewImage(event)">
+               <hr>
+               {{#each category}}
+                <input type="checkbox" name="category" id="{{_id}}"  value="{{this.category}}" {{ifequals ../post.data.category this.category}} > {{this.category}} <br>
+                
+               {{/each}}
+            </div>
+        </div>
+
+    </form>
+</section>
+<style>
+    .postinput {
+        width: 85%;
+        margin-top: 5px;
+        margin-left: 30px;
+        font-size: 20px;
+        border: none;
+        background-color: #fff;
+        border-bottom: 2px solid #5fbae9;
+    }
+
+    .text {
+        margin-bottom: -7px;
+        background-color: #fff;
+        border: none;
+        padding: 15px 15px;
+    }
+
+    .article {
+        background-color: #ebebeb;
+    }
+    #image{
+    margin-bottom: 10px;
+    width: 150px ;
+    height: 100px;
+    border: solid 2px #5fbae9;
+    appearance: initial;
+    background-color: unset;
+    cursor: pointer;
+    align-items: unset;
+    color: unset;
+    text-overflow: ellipsis;
+    white-space:unset;
+    text-align: unset !important;
+    padding:unset;
+    -webkit-writing-mode:unset;
+    }
+    .imagetag{
+        margin-left: -140px;
+    }
+</style>
+<script>
+    function viewImage(event){
+        document.getElementById('image').src=URL.createObjectURL(event.target.files[0])
+    }
+
+</script>
